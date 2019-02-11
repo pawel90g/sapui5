@@ -1,0 +1,69 @@
+<core:View xmlns:core="sap.ui.core"
+    xmlns="sap.uxap"
+    xmlns:layout="sap.ui.layout"
+    xmlns:m="sap.m"
+    controllerName="sapui5.demo.trippin.controller.Gmail"
+    height="100%">
+    <m:Page showNavButton="true" navButtonPress="onNavPress" title="Gmail">
+        <m:subHeader>
+            <m:Toolbar>
+                <m:Button icon="sap-icon://add" text="{i18n>create}" press="onNewEmailClick" id="newBtn" visible="{= ${signInStatus>/signedIn} === true}" class="material button rounded"/>
+                <m:Button icon="sap-icon://refresh" press="onRefreshClick" id="refreshBtn" visible="{= ${signInStatus>/signedIn} === true}" class="material button rounded"/>
+                <m:ToolbarSpacer/>
+                <m:Button icon="sap-icon://visits" press="onSignInClick" id="signInBtn" visible="{= ${signInStatus>/signedIn} !== true}"/>
+                <m:Button icon="sap-icon://log" press="onSignOutClick" id="signOutBtn" visible="{= ${signInStatus>/signedIn} === true}"/>
+            </m:Toolbar>
+        </m:subHeader>
+        <layout:Splitter orientation="Horizontal" height="100%">
+            <layout:contentAreas>
+                <m:List title="{i18n>labels}" items="{path: '/labels'}" width="100%" id="labelsList">
+                    <m:layoutData>
+                        <layout:SplitterLayoutData size="15%" resizable="false"/>
+                    </m:layoutData>
+                    <m:items>
+                        <m:ObjectListItem title="{translated}" press="onLabelClick" icon="{icon}" type="Active" class="small rounded"/>
+                    </m:items>
+                </m:List>
+                <m:List headerText="{i18n>threads}" items="{path: '/threads'}" width="100%" swipe="onThreadsSwipe">
+                    <m:layoutData>
+                        <layout:SplitterLayoutData size="25%" resizable="false"/>
+                    </m:layoutData>
+                    <m:items>
+                        <m:ObjectListItem title="{messages/0/subject}" press="onThreadClick" type="Active">
+                            <m:attributes>
+                                <m:ObjectAttribute text="{messages/0/fromOrTo}"/>
+                                <m:ObjectAttribute text="{messages/0/date}" />
+                                <m:ObjectAttribute text="{messages/0/cuttedSnippet}" />
+                            </m:attributes>
+                        </m:ObjectListItem>
+                    </m:items>
+                    <m:swipeContent>
+                        <m:Button
+                            text="{i18n>delete}"
+                            icon="sap-icon://delete"
+                            type="Reject"
+                            press="onThreadDelete" />
+                    </m:swipeContent>
+                </m:List>
+                <m:List headerText="{selectedThread>/messages/0/subject}" items="{path: 'selectedThread>/messages'}" width="100%" swipe="onMessagesSwipe">
+                    <m:layoutData>
+                        <layout:SplitterLayoutData size="auto" resizable="false"/>
+                    </m:layoutData>
+                    <m:items>
+                        <m:ObjectListItem title="{selectedThread>from}" number="{selectedThread>date}" press="onMessageClick" type="Active">
+                            <m:attributes>
+                                <m:ObjectAttribute text="{selectedThread>snippet}" class="wrap-text"/>
+                            </m:attributes>
+                        </m:ObjectListItem>
+                    </m:items>
+                    <m:swipeContent>
+                        <m:Button
+                            text="{i18n>delete}"
+                            type="Reject"
+                            press="onMessageDelete" />
+                    </m:swipeContent>
+                </m:List>
+            </layout:contentAreas>
+        </layout:Splitter>
+    </m:Page>
+</core:View>

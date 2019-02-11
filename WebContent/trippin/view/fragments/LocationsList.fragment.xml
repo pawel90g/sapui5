@@ -1,0 +1,16 @@
+<core:FragmentDefinition 
+    xmlns:m="sap.m" 
+    xmlns:core="sap.ui.core" 
+    xmlns:layout="sap.ui.layout">
+    <m:Dialog id="selectLocationDialog" title="{i18n>selectLocation}">
+        <layout:VerticalLayout class="sapUiContentPadding" width="100%">
+            <m:ComboBox change="onLocationSelect"
+            items="{searchedLocations>/results}" id="locationSelect">
+                <core:ListItem text="{searchedLocations>formatted}"/>
+            </m:ComboBox>
+        </layout:VerticalLayout>
+        <m:buttons>
+            <m:Button text="{i18n>close}" press="onLocationDialogClose" />
+        </m:buttons>
+    </m:Dialog>
+</core:FragmentDefinition>

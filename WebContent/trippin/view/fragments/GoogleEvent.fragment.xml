@@ -1,0 +1,29 @@
+<core:FragmentDefinition
+    xmlns:m="sap.m"
+    xmlns:layout="sap.ui.layout"
+    xmlns:core="sap.ui.core">
+    <m:Popover title="{events>summary}" class="sapUiContentPadding" placement="Bottom">
+        <layout:VerticalLayout>
+            <m:Label text="{
+                    path: 'events>start',
+                    formatter: '.formatters.onlyDate'
+                }" visible="{= ${events>allDay} === true}"/>
+            <m:Label text="{
+                    path: 'events>start',
+                    formatter: '.formatters.formatDate'
+                } - {
+                    path: 'events>end',
+                    formatter: '.formatters.formatDate'
+                }" visible="{= ${events>allDay} !== true}"/>
+                <m:Link href="{events>htmlLink}" text="{i18n>openInGoogleCalendar}" target="_blank"/>
+        </layout:VerticalLayout>
+        <m:footer>
+            <m:Toolbar>
+                <m:ToolbarSpacer/>
+                <m:Button icon="sap-icon://delete" press="onEventDelete"/>
+                <m:Button icon="sap-icon://edit" press="onEventEdit"/>
+                <m:Button id="close" text="{i18n>close}" press="onGoogleEventPopoverClose" />
+            </m:Toolbar>
+        </m:footer>
+    </m:Popover>
+</core:FragmentDefinition>

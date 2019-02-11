@@ -1,0 +1,15 @@
+<mvc:View controllerName="sapui5.demo.trippin.controller.SapUi5" 
+    xmlns:mvc="sap.ui.core.mvc" 
+    xmlns:m="sap.m" height="100%">
+    <m:Page showNavButton="true" navButtonPress="onNavPress">
+        <m:ScrollContainer height="100%" width="100%" horizontal="true" vertical="true">
+            <m:FlexBox direction="Column" renderType="Div" class="sapUiSmallMargin">
+                <m:PDFViewer source="{/Source}" title="{/Title}" height="{/Height}">
+                    <m:layoutData>
+                        <m:FlexItemData growFactor="1" />
+                    </m:layoutData>
+                </m:PDFViewer>
+            </m:FlexBox>
+        </m:ScrollContainer>
+    </m:Page>
+</mvc:View>

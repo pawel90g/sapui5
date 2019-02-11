@@ -1,0 +1,8 @@
+<core:FragmentDefinition
+	xmlns:m="sap.m"
+	xmlns:core="sap.ui.core">
+	<m:BusyDialog id="busyDialog"
+		title="{i18n>loading}"
+		text="{i18n>loadingMessage}"
+		showCancelButton="false"/>
+</core:FragmentDefinition>

@@ -1,0 +1,48 @@
+<mvc:View 
+    xmlns:m="sap.m" 
+    xmlns:layout="sap.ui.layout" 
+    xmlns:mvc="sap.ui.core.mvc" controllerName="sapui5.demo.trippin.controller.People">
+    <m:Page title="{i18n>people}" showNavButton="true" navButtonPress="onNavPress">
+        <m:subHeader>
+                <m:Toolbar>
+                    <m:SearchField width="100%" search="onSearch" id="peopleSearchField"/>
+                </m:Toolbar>
+        </m:subHeader>
+        <m:content>
+            <m:Table items="{/value}" class="sapUiResponsiveMargin" width="auto" noDataText="No data" growing="true" growingScrollToLoad="true" id="peopleTable">
+                <m:columns>
+                    <m:Column>
+                        <m:header>
+                            <m:Text text="{i18n>userName}"/>
+                        </m:header>
+                    </m:Column>
+                    <m:Column>
+                        <m:header>
+                            <m:Text text="{i18n>firstName}"/>
+                        </m:header>
+                    </m:Column>
+                    <m:Column>
+                        <m:header>
+                            <m:Text text="{i18n>lastName}"/>
+                        </m:header>
+                    </m:Column>
+                    <m:Column>
+                        <m:header>
+                            <m:Text text="{i18n>emails}"/>
+                        </m:header>
+                    </m:Column>
+                </m:columns>
+                <m:items>
+                    <m:ColumnListItem type="Navigation" press="onListPress">
+                        <m:cells>
+                            <m:ObjectIdentifier text="{UserName}"/>
+                            <m:ObjectIdentifier text="{FirstName}"/>
+                            <m:ObjectIdentifier text="{LastName}"/>
+                            <m:ObjectIdentifier text="{Emails}"/>
+                        </m:cells>
+                    </m:ColumnListItem>
+                </m:items>
+            </m:Table>
+        </m:content>
+    </m:Page>
+</mvc:View>

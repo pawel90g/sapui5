@@ -1,0 +1,287 @@
+{
+    "_version": "1.1.0",
+    "sap.app": {
+        "_version": "1.1.0",
+        "id": "sapui5.demo.trippin",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "dataSources": {
+            "peopleService": {
+                "uri": "http://services.odata.org/TripPinRESTierService/(S(5ozslsgdz2is0dpddpf5htdn))/People",
+                "type": "JSON"
+            }
+        }
+    },
+    "sap.ui": {
+        "_version": "1.1.0",
+        "technology": "UI5",
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        },
+        "supportedThemes": [
+            "sap_bluecrystal"
+        ]
+    },
+    "sap.ui5": {
+        "_version": "1.1.0",
+        "rootView": {
+            "viewName": "sapui5.demo.trippin.view.App",
+            "type": "XML"
+        },
+        "dependencies": {
+            "minUI5Version": "1.30.0",
+            "libs": {
+                "sap.m": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "": {
+                "dataSource": "peopleService"
+            },
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "sapui5.demo.trippin.i18n.i18n"
+                }
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "viewPath": "sapui5.demo.trippin.view",
+                "controlId": "app",
+                "controlAggregation": "pages",
+                "bypassed": {
+                    "target": "notFound"
+                }
+            },
+            "routes": [
+                {
+                    "pattern": "",
+                    "name": "master",
+                    "target": "master"
+                },
+                {
+                    "pattern": "gmail",
+                    "name": "gmail",
+                    "target": "gmail"
+                },
+                {
+                    "pattern": "google-calendar",
+                    "name": "googleCalendar",
+                    "target": "googleCalendar"
+                },
+                {
+                    "pattern": "facebook",
+                    "name": "facebook",
+                    "target": "facebook"
+                },
+                {
+                    "pattern": "people",
+                    "name": "people",
+                    "target": "people"
+                },
+                {
+                    "pattern": "airports",
+                    "name": "airports",
+                    "target": "airports"
+                },
+                {
+                    "pattern": "sapui5",
+                    "name": "sapui5",
+                    "target": "sapui5"
+                },
+                {
+                    "pattern": "weather",
+                    "name": "weather",
+                    "target": "weather"
+                },
+                {
+                    "pattern": "todos",
+                    "name": "todos",
+                    "target": "todos"
+                },
+                {
+                    "pattern": "posts",
+                    "name": "posts",
+                    "target": "posts"
+                },
+                {
+                    "pattern": "appointments",
+                    "name": "appointments",
+                    "target": "appointments"
+                },
+                {
+                    "pattern": "profile",
+                    "name": "profile",
+                    "target": "profile"
+                },
+                {
+                    "pattern": "scheduler",
+                    "name": "scheduler",
+                    "target": "scheduler"
+                },
+                {
+                    "pattern": "airport/{IcaoCode}",
+                    "name": "airport",
+                    "target": "airport"
+                },
+                {
+                    "pattern": "/person/{UserName}",
+                    "name": "person",
+                    "target": "person"
+                },
+                {
+                    "pattern": "/edit/:UserName:",
+                    "name": "editPerson",
+                    "target": "editPerson"
+                },
+                {
+                    "pattern": "/person/{UserName}/trips",
+                    "name": "personTrips",
+                    "target": "personTrips"
+                },
+                {
+                    "pattern": "/person/{UserName}/trip/{TripId}",
+                    "name": "trip",
+                    "target": "trip"
+                },
+                {
+                    "pattern": "/person/{UserName}/friends",
+                    "name": "personFriends",
+                    "target": "personFriends"
+                },
+                {
+                    "pattern": "card",
+                    "name": "card",
+                    "target": "card"
+                }
+            ],
+            "targets": {
+                "master": {
+                    "viewName": "Master",
+                    "viewLevel": 1,
+                    "viewId": "master"
+                },
+                "gmail": {
+                    "viewName": "Gmail",
+                    "viewLevel": 2,
+                    "viewId": "gmail"
+                },
+                "googleCalendar": {
+                    "viewName": "GoogleCalendar",
+                    "viewLevel": 2,
+                    "viewId": "googleCalendar"
+                },
+                "facebook": {
+                    "viewName": "facebook",
+                    "viewLevel": 2,
+                    "viewId": "facebook"
+                },
+                "people": {
+                    "viewName": "People",
+                    "viewLevel": 2,
+                    "viewId": "people"
+                },
+                "airports": {
+                    "viewName": "Airports",
+                    "viewLevel": 2,
+                    "viewId": "airports"
+                },
+                "sapui5": {
+                    "viewName": "SapUi5",
+                    "viewLevel": 2,
+                    "viewId": "sapui5"
+                },
+                "weather": {
+                    "viewName": "Weather",
+                    "viewLevel": 2,
+                    "viewId": "weather"
+                },
+                "todos": {
+                    "viewName": "Todos",
+                    "viewLevel": 2,
+                    "viewId": "todos"
+                },
+                "posts": {
+                    "viewName": "Posts",
+                    "viewLevel": 2,
+                    "viewId": "posts"
+                },
+                "appointments": {
+                    "viewName": "Appointments",
+                    "viewLevel": 2,
+                    "viewId": "appointments"
+                },
+                "profile": {
+                    "viewName": "Profile",
+                    "viewLevel": 3,
+                    "viewId": "profile"
+                },
+                "scheduler": {
+                    "viewName": "Scheduler",
+                    "viewLevel": 4,
+                    "viewId": "scheduler"
+                },
+                "airport": {
+                    "viewName": "Airport",
+                    "viewLevel": 3,
+                    "viewId": "airport"
+                },
+                "person": {
+                    "viewName": "Person",
+                    "viewLevel": 3,
+                    "viewId": "person"
+                },
+                "editPerson": {
+                    "viewName": "EditPerson",
+                    "viewLevel": 3,
+                    "viewId": "editPerson"
+                },
+                "personTrips": {
+                    "viewName": "PersonTrips",
+                    "viewLevel": 4,
+                    "viewId": "personTrips"
+                },
+                "trip": {
+                    "viewName": "Trip",
+                    "viewLevel": 5,
+                    "viewId": "trip"
+                },
+                "personFriends": {
+                    "viewName": "PersonFriends",
+                    "viewLevel": 4,
+                    "viewId": "personFriends"
+                },
+                "notFound": {
+                    "viewName": "NotFound",
+                    "viewId": "notFound"
+                },
+                "card": {
+                    "viewName": "Card",
+                    "viewLevel": 2,
+                    "viewId": "card"
+                }
+            }
+        }
+    }
+}

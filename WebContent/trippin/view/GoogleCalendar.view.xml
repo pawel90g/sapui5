@@ -1,0 +1,67 @@
+<core:View xmlns:core="sap.ui.core"
+    xmlns="sap.uxap"
+    xmlns:layout="sap.ui.layout"
+    xmlns:m="sap.m"
+    xmlns:unified="sap.ui.unified"
+    controllerName="sapui5.demo.trippin.controller.GoogleCalendar"
+    height="100%">
+    <m:Page showNavButton="true" navButtonPress="onNavPress" title="Google Calendar">
+        <m:subHeader>
+            <m:Toolbar>
+                <m:Button icon="sap-icon://add" text="{i18n>create}" press="onNewEventClick" id="newBtn" visible="{= ${signInStatus>/signedIn} === true}" class="material button rounded"/>
+                <m:Button icon="sap-icon://refresh" press="onRefreshClick" id="refreshBtn" visible="{= ${signInStatus>/signedIn} === true}" class="material button rounded"/>
+                <m:ToolbarSpacer/>
+                <m:Button icon="sap-icon://visits" press="onSignInClick" id="signInBtn" visible="{= ${signInStatus>/signedIn} !== true}"/>
+                <m:Button icon="sap-icon://log" press="onSignOutClick" id="signOutBtn" visible="{= ${signInStatus>/signedIn} === true}"/>
+            </m:Toolbar>
+        </m:subHeader>
+        <layout:Splitter orientation="Horizontal" height="100%">
+            <layout:contentAreas>
+                <m:VBox>
+                    <m:layoutData>
+                        <layout:SplitterLayoutData size="17%" resizable="true"/>
+                    </m:layoutData>
+                    <unified:Calendar
+                        id="miniCalendar"
+                        select="onMiniCalendarSelect" />
+                    <m:List title="{i18n>calendars}" items="{path: '/calendars'}" width="100%" id="calendarsList" mode="MultiSelect" selectionChange="onCalendarSelectionChange">
+                        <m:items>
+                            <m:ObjectListItem title="{summary}" press="onCalendarClick" icon="sap-icon://calendar" type="Active" class="small rounded"/>
+                        </m:items>
+                    </m:List>
+                </m:VBox>
+                <m:VBox>
+                    <m:layoutData>
+                        <layout:SplitterLayoutData size="83%" resizable="true"/>
+                    </m:layoutData>
+                    <m:PlanningCalendar
+                        id="calendar"
+                        rows="{path: 'events>/'}"
+                        viewKey="Week"
+                        appointmentsVisualization="Filled"
+                        showEmptyIntervalHeaders="false"
+                        intervalSelect="onIntervalSelect"
+                        startDateChange="onCalendarStartDateChange"
+                        appointmentSelect="onCalendarAppointmentSelect"
+                        viewChange="onCalendarViewChange">
+                        <m:rows>
+                            <m:PlanningCalendarRow
+                                title="{events>name}"
+                                appointments="{path : 'events>events', templateShareable: 'true'}"
+                                enableAppointmentsDragAndDrop="true"
+                                appointmentDrop="onAppointmentDrop">
+                                <m:appointments>
+                                    <unified:CalendarAppointment
+                                        startDate="{events>start}"
+                                        endDate="{events>end}"
+                                        title="{events>summary}"
+                                        type="Type06" />
+                                </m:appointments>
+                            </m:PlanningCalendarRow>
+                        </m:rows>
+                    </m:PlanningCalendar>
+                </m:VBox>
+            </layout:contentAreas>
+        </layout:Splitter>
+    </m:Page>
+</core:View>

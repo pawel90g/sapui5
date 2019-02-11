@@ -1,0 +1,81 @@
+<core:View xmlns:core="sap.ui.core"
+	xmlns="sap.uxap"
+	xmlns:layout="sap.ui.layout"
+	xmlns:m="sap.m"
+	xmlns:personal="sapui5.demo.trippin.blocks.personal"
+	xmlns:education="sapui5.demo.trippin.blocks.education"
+	xmlns:employment="sapui5.demo.trippin.blocks.employment"
+	xmlns:skills="sapui5.demo.trippin.blocks.skills"
+	controllerName="sapui5.demo.trippin.controller.Card"
+	height="100%">
+	<m:Page showNavButton="true" navButtonPress="onNavPress">
+		<ObjectPageLayout id="ObjectPageLayout" enableLazyLoading="true">
+			<headerTitle>
+				<ObjectPageHeader objectImageURI="https://margaret-solutions.eu/images/pawel.jpg"
+					objectTitle="Paweł Garbacik"
+					objectImageShape="Circle"
+					objectImageAlt="Paweł Garbacik"
+					isObjectIconAlwaysVisible="true"
+					objectSubtitle="Software Developer">
+				</ObjectPageHeader>
+			</headerTitle>
+
+			<headerContent>
+				<layout:VerticalLayout>
+					<m:Link text="+48 731 530 700"/>
+					<m:Link text="pawel.garbacik@outlook.com"/>
+					<layout:HorizontalLayout>
+						<m:Image height="30px" src="https://www.northeastern.edu/careers/wp-content/uploads/2012/10/CBpFkPaz-300x300.png" class="sapUiTinyMargin circle" press="onInClick"/>
+						<m:Image height="30px" src="http://www.appki.com.pl/wp-content/uploads/2014/07/v65oai7fxn47qv9nectx.png" class="sapUiTinyMargin circle" press="onTwitterClick"/>
+					</layout:HorizontalLayout>
+				</layout:VerticalLayout>
+
+				<layout:VerticalLayout>
+					<m:Label text="Knurów, Poland"/>
+				</layout:VerticalLayout>
+			</headerContent>
+
+			<sections>
+				<ObjectPageSection title="Personal">
+					<subSections>
+						<ObjectPageSubSection title=" ">
+							<blocks>
+								<personal:PersonalFormBlock id="personalinfo" columnLayout="4"/>
+							</blocks>
+						</ObjectPageSubSection>
+					</subSections>
+				</ObjectPageSection>
+
+				<ObjectPageSection title="Employment">
+					<subSections>
+						<ObjectPageSubSection title="Employment">
+							<blocks>
+								<employment:EmploymentFormBlock id="employmentInfo" columnLayout="4"/>
+							</blocks>
+						</ObjectPageSubSection>
+					</subSections>
+				</ObjectPageSection>
+
+				<ObjectPageSection title="Education">
+					<subSections>
+						<ObjectPageSubSection title="Education">
+							<blocks>
+								<education:EducationFormBlock id="educationInfo" columnLayout="4"/>
+							</blocks>
+						</ObjectPageSubSection>
+					</subSections>
+				</ObjectPageSection>
+
+				<ObjectPageSection title="Skills">
+					<subSections>
+						<ObjectPageSubSection title="Skills">
+							<blocks>
+								<skills:SkillsFormBlock id="skillsInfo" columnLayout="4"/>
+							</blocks>
+						</ObjectPageSubSection>
+					</subSections>
+				</ObjectPageSection>
+			</sections>
+		</ObjectPageLayout>
+	</m:Page>
+</core:View>

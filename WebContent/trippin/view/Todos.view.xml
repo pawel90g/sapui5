@@ -1,0 +1,70 @@
+<mvc:View 
+	xmlns:m="sap.m" 
+	xmlns="sap.suite.ui.commons" 
+	xmlns:layout="sap.ui.layout" 
+	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns:viz="sap.viz.ui5.controls" 
+	xmlns:core="sap.ui.core" 
+	xmlns:uxap="sap.uxap" 
+	xmlns:table="sap.ui.table" 
+	xmlns:dnd="sap.ui.core.dnd" controllerName="sapui5.demo.trippin.controller.Todos">
+	<m:Page title="Todos" showNavButton="true" navButtonPress="onNavPress">
+		<m:content>
+			<m:HBox renderType="Bare" class="sapUiTinyMarginBeginEnd">
+				<m:VBox justifyContent="Left" class="sapUiTinyMarginBeginEnd">
+					<m:SelectList items="{users>/}" itemPress="onUserSelect">
+						<m:items>
+							<core:Item kay="{users>id}" text="{users>name}"/>
+						</m:items>
+					</m:SelectList>
+				</m:VBox>
+				<table:Table id="todoTable" selectionMode="Single" rows="{
+						path: 'todos>/',
+                        filters: {path: 'completed', operator: 'EQ', value1: false}
+					}" visibleRowCount="10">
+					<table:extension>
+						<m:Toolbar>
+							<m:Title text="{i18n>todo}" />
+						</m:Toolbar>
+					</table:extension>
+					<table:columns>
+						<table:Column>
+							<m:Text text="{i18n>title}" />
+							<table:template>
+								<m:Text text="{todos>title}" wrapping="false" />
+							</table:template>
+						</table:Column>
+					</table:columns>
+					<table:dragDropConfig>
+						<dnd:DragDropInfo sourceAggregation="rows" targetAggregation="rows" targetElement="completedTable" dropPosition="On" dragStart="onDragStart" drop="onDropCompleted"/>
+					</table:dragDropConfig>
+				</table:Table>
+				<m:VBox justifyContent="Center" class="sapUiTinyMarginBeginEnd">
+					<m:Button class="sapUiTinyMarginBottom" icon="sap-icon://navigation-right-arrow" press="moveToCompleted"/>
+					<m:Button icon="sap-icon://navigation-left-arrow" press="moveToToDo"/>
+				</m:VBox>
+				<table:Table id="completedTable" selectionMode="Single" rows="{
+						path: 'todos>/',
+                        filters: {path: 'completed', operator: 'EQ', value1: true}
+					}" visibleRowCount="10">
+					<table:extension>
+						<m:Toolbar>
+							<m:Title text="{i18n>completed}" />
+						</m:Toolbar>
+					</table:extension>
+					<table:columns>
+						<table:Column>
+							<m:Text text="{i18n>title}" />
+							<table:template>
+								<m:Text text="{todos>title}" wrapping="false" />
+							</table:template>
+						</table:Column>
+					</table:columns>
+					<table:dragDropConfig>
+						<dnd:DragDropInfo sourceAggregation="rows" targetAggregation="rows" targetElement="todoTable" dropPosition="On" dragStart="onDragStart" drop="onDropToDo"/>
+					</table:dragDropConfig>
+				</table:Table>
+			</m:HBox>
+		</m:content>
+	</m:Page>
+</mvc:View>

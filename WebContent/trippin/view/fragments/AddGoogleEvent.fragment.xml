@@ -1,0 +1,86 @@
+<core:FragmentDefinition
+    xmlns:m="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout"
+    xmlns:form="sap.ui.layout.form">
+    <m:Dialog id="addGoogleEvent" title="">
+        <form:SimpleForm id="addEventForm" layout="ResponsiveGridLayout" editable="true" width="100%" emptySpanL="1" emptySpanM="1" columnsL="1" columnsM="1" labelSpanL="4" labelSpanM="4">
+            <form:content>
+                <m:Label text="Tytuł"/>
+                <m:Input value="{
+                    path: 'newEvent>/summary'
+                }" id="titleInput"/>
+                
+                <m:Label text="Data rozpoczęcia"/>
+                <m:DateTimePicker id="startDateTimePicker" placeholder="{i18n>startsAt}" change="onStartDateTimeChange" class="sapUiSmallMarginBottom" value="{path:'newEvent>/start', type:'sap.ui.model.type.DateTime', formatOptions: { style: 'medium', strictParsing: true}}" />
+
+                <m:Label text="Data zakończenia"/>
+                <m:DateTimePicker id="endDateTimePicker" placeholder="{i18n>endsAt}" change="onEndDateTimeChange" class="sapUiSmallMarginBottom" value="{path:'newEvent>/end', type:'sap.ui.model.type.DateTime', formatOptions: { style: 'medium', strictParsing: true}}" />
+                <m:Label text="Opis"/>
+                <m:TextArea value="{path: 'newEvent>/description'}"/>
+                <m:Label text="Kalendarz"/>
+                <m:ComboBox id="selectedCalendar" items="{path: '/calendars'}" change="onAddEventCalendarSelect">
+                    <core:Item key="{id}" text="{summary}"/>
+                </m:ComboBox>
+                <m:Label text="Powtarzanie"/>
+                <m:CheckBox selected="{
+                    path: 'newEvent>/recurrence',
+                    type: 'sap.ui.model.type.Boolean'
+                }"/>
+            </form:content>
+        </form:SimpleForm>
+        <form:SimpleForm id="recurrenceForm" layout="ResponsiveGridLayout" editable="true" width="100%" emptySpanL="1" emptySpanM="1" columnsL="1" columnsM="1" labelSpanL="4" labelSpanM="4" visible="{= ${newEvent>/recurrence} }">
+            <form:content>
+                <core:Title text="Powtarzanie"/>
+                <m:Label text="Powtarzaj co"/>
+                <m:Input value="{
+                    path: 'newEvent>/repeatEvery',
+                    type: 'sap.ui.model.type.Integer',
+                    constraints: { minimum: 1 }
+                }" id="repeatEveryInput"/>
+                <m:ComboBox id="repeatIntervalComboBox" change="onRepeatIntervalChanged">
+                    <core:Item key="0" text="Dni"/>
+                    <core:Item key="1" text="Tygodni"/>
+                    <core:Item key="2" text="Miesięcy"/>
+                    <core:Item key="3" text="Lat"/>
+                </m:ComboBox>
+
+                <core:Title text="Powtarzaj"/>
+                <m:Label text="" visible="{= ${newEvent>/repeatInterval} === 1 }"/>
+                <m:CheckBox text="P" name="MO" class="dayOfWeek" visible="{= ${newEvent>/repeatInterval} === 1 }"/>
+                <m:CheckBox text="W" name="TU" class="dayOfWeek" visible="{= ${newEvent>/repeatInterval} === 1 }"/>
+                <m:CheckBox text="Ś" name="WE" class="dayOfWeek" visible="{= ${newEvent>/repeatInterval} === 1 }"/>
+                <m:CheckBox text="C" name="TH" class="dayOfWeek" visible="{= ${newEvent>/repeatInterval} === 1 }"/>
+                <m:CheckBox text="P" name="FR" class="dayOfWeek" visible="{= ${newEvent>/repeatInterval} === 1 }"/>
+                <m:CheckBox text="S" name="SA" class="dayOfWeek" visible="{= ${newEvent>/repeatInterval} === 1 }"/>
+                <m:CheckBox text="N" name="SU" class="dayOfWeek" visible="{= ${newEvent>/repeatInterval} === 1 }"/>
+
+                <m:ComboBox id="repeatMonthly" visible="{= ${newEvent>/repeatInterval} === 2 }">
+                    <core:Item key="0" text="Co miesiąc w: {newEvent>/dayOfMonth}. dniu"/>
+                    <core:Item key="1" text="Co miesiąc w: {newEvent>/weekOfMonth}. {newEvent>/dayOfWeekName}"/>
+                </m:ComboBox>
+
+                <core:Title text="Kończy się"/>
+                <m:RadioButtonGroup select="onWhenEndsSelected" id="onWhenEndsSelected">
+                    <m:buttons>
+                        <m:RadioButton id="neverEndsRadioButton" text="Nigdy"/>
+                        <m:RadioButton id="endsOnRadioButton" text="W dniu"/>
+                        <m:RadioButton id="afterTimesRadioButton" text="Po wystąpeniach"/>
+                    </m:buttons>
+                </m:RadioButtonGroup>
+
+                <m:DatePicker id="endsOnDatePicker" visible="{= ${newEvent>/endsType} === 1}" value="{newEvent>/endsOnDate}"/>
+                <m:Input id="afterTimesInput" visible="{= ${newEvent>/endsType} === 2}" value="{
+                    path: 'newEvent>/afterTimes',
+                    type: 'sap.ui.model.type.Integer',
+                    constraints: { minimum: 1 }
+                }"/>
+            </form:content>
+        </form:SimpleForm>
+
+        <m:buttons>
+            <m:Button text="{i18n>save}" press="onAddGoogleEvent"/>
+            <m:Button text="{i18n>close}" press="onAddGoogleEventClose" />
+        </m:buttons>
+    </m:Dialog>
+</core:FragmentDefinition>

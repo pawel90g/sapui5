@@ -1,0 +1,92 @@
+<mvc:View 
+    xmlns:m="sap.m" 
+    xmlns:layout="sap.ui.layout" 
+    xmlns:unified="sap.ui.unified" 
+    xmlns:mvc="sap.ui.core.mvc" controllerName="sapui5.demo.trippin.controller.PersonTrips">
+    <m:Page title="{i18n>tripsList}" showNavButton="true" navButtonPress="onNavPress">
+        <m:content>
+            <m:Table id="tripsTable" items="{/value}" width="auto" class="sapUiResponsiveMargin" noDataText="{i18n>noTrips}" growing="true" growingScrollToLoad="true">
+                <m:columns>
+                    <m:Column id="nameColumn">
+                        <m:header>
+                            <m:Text text="{i18n>name}" />
+                        </m:header>
+                    </m:Column>
+                    <m:Column id="budgetColumn">
+                        <m:header>
+                            <m:Text text="{i18n>budget}"/>
+                        </m:header>
+                    </m:Column>
+                    <m:Column id="descriptionColumn">
+                        <m:header>
+                            <m:Text text="{i18n>description}"/>
+                        </m:header>
+                    </m:Column>
+                    <m:Column id="tagsColumn">
+                        <m:header>
+                            <m:Text text="{i18n>tags}"/>
+                        </m:header>
+                    </m:Column>
+                    <m:Column id="startsAtColumn">
+                        <m:header>
+                            <m:Text text="{i18n>startsAt}"/>
+                        </m:header>
+                    </m:Column>
+                    <m:Column id="endsAtColumn">
+                        <m:header>
+                            <m:Text text="{i18n>endsAt}"/>
+                        </m:header>
+                    </m:Column>
+                </m:columns>
+                <m:items>
+                    <m:ColumnListItem type="Navigation" press="onListPress">
+                        <m:cells>
+                            <m:ObjectIdentifier text="{Name}"/>
+                            <m:ObjectNumber number="{Budget}" unit="USD"/>
+                            <m:ObjectIdentifier text="{Description}"/>
+                            <m:ObjectIdentifier text="{Tags}"/>
+                            <m:ObjectIdentifier text="{
+                                path: 'StartsAt',
+                                formatter: '.formatters.formatDate'
+                            }"/>
+                            <m:ObjectIdentifier text="{
+                                path: 'EndsAt',
+                                formatter: '.formatters.formatDate'
+                            }"/>
+                        </m:cells>
+                    </m:ColumnListItem>
+                </m:items>
+            </m:Table>
+            <m:PlanningCalendar
+                    id="tripCalendar"
+                    startDate="{/startDate}"
+                    rows="{/trips}"
+                    appointmentsVisualization="Filled"
+                    showEmptyIntervalHeaders="false"
+                    showWeekNumbers="false"
+                    viewKey="Month"
+                    showRowHeaders="false"
+                    appointmentSelect="onAppointmentClick"
+                    class="sapUiResponsiveMargin">
+                    <m:rows>
+                        <m:PlanningCalendarRow
+                            appointments="{
+                                path: 'appointments',
+                                templateShareable: 'false'
+                            }">
+                            <m:appointments>
+                                <unified:CalendarAppointment 
+                                    startDate="{start}"
+                                    endDate="{end}"
+                                    tentative="true"
+                                    type="Type06"
+                                    title="{title}"
+                                    text="{description}" >
+                                </unified:CalendarAppointment>
+                            </m:appointments>
+                        </m:PlanningCalendarRow>
+                    </m:rows>
+                </m:PlanningCalendar>
+        </m:content>
+    </m:Page>
+</mvc:View>

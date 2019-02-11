@@ -1,0 +1,23 @@
+<core:FragmentDefinition 
+    xmlns:m="sap.m" 
+    xmlns:core="sap.ui.core" 
+    xmlns:form="sap.ui.layout.form">
+    <m:Dialog id="addAppointment" title="{i18n>shareTrip}">
+        <form:SimpleForm id="addAppointmentForm" layout="ResponsiveGridLayout" editable="true" width="100%" emptySpanL="1" emptySpanM="1" columnsL="2" columnsM="1" labelSpanL="4" labelSpanM="4">
+            <form:content>
+                <m:Label text="{i18n>title}"/>
+                <m:Input value="{new>title}" id="titleInput"/>
+                <m:Label text="{i18n>description}"/>
+                <m:Input value="{new>info}" id="infoInput"/>
+                <m:Label text="{i18n>startsAt}"/>
+                <m:DateTimePicker id="startsAtDatePicker" placeholder="{i18n>startsAt}" change="handleChange" class="sapUiSmallMarginBottom" value="{path:'new>start', type:'sap.ui.model.type.DateTime', formatOptions: { style: 'medium', strictParsing: true}}" />
+                <m:Label text="{i18n>endsAt}"/>
+                <m:DateTimePicker id="endsAtDatePicker" placeholder="{i18n>endsAt}" change="handleChange" class="sapUiSmallMarginBottom" value="{path:'new>end', type:'sap.ui.model.type.DateTime', formatOptions: { style: 'medium', strictParsing: true}}"/>
+            </form:content>
+        </form:SimpleForm>
+        <m:buttons>
+            <m:Button text="{i18n>save}" press="onAddAppointment" />
+            <m:Button text="{i18n>close}" press="onAddAppointmentClose" />
+        </m:buttons>
+    </m:Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,32 @@
+<core:FragmentDefinition
+    xmlns:m="sap.m"
+    xmlns:layout="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc">
+    <m:Dialog id="emailViewer" title="{selectedThread>/messages/0/subject}" contentWidth="80%">
+        <m:subHeader>
+            <m:Bar>
+                <m:contentRight>
+                    <m:Button id="reply" press="onReplyClick" icon="sap-icon://response"/>
+                    <m:Button id="decline" press="onEmailClose" icon="sap-icon://decline"/>
+                </m:contentRight>
+            </m:Bar>
+        </m:subHeader>
+        <layout:VerticalLayout
+            class="sapUiContentPadding"
+            width="100%">
+            <layout:content>
+                <core:HTML id="htmlViewer" content="{selectedThread>/selectedMessage/content}"/>
+                <m:Carousel class="sapUiContentPadding" loop="true" id="attachmentsCarousel" pages="{selectedThread>/selectedMessage/atts}">
+                    <m:HBox>
+                        <m:Image src="https://image.flaticon.com/icons/svg/337/337946.svg" height="50px" press="onAttachmentDownload"/>
+                        <m:Link text="{selectedThread>name}" height="50px" press="onAttachmentDownload"/>
+                    </m:HBox>
+                </m:Carousel>
+            </layout:content>
+        </layout:VerticalLayout>
+        <m:buttons>
+            <m:Button id="close" text="{i18n>close}" press="onEmailClose" />
+        </m:buttons>
+    </m:Dialog>
+</core:FragmentDefinition>

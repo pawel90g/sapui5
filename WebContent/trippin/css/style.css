@@ -1,0 +1,112 @@
+.circle {
+    border-radius: 100%
+}
+
+.bold {
+    font-weight: 800
+}
+
+.italic {
+    font-style: italic
+}
+
+.font16 {
+    font-size: 16pt;
+}
+
+.font15 {
+    font-size: 15pt;
+}
+
+.font14 {
+    font-size: 14pt;
+}
+
+.font13 {
+    font-size: 13pt;
+}
+
+.font12 {
+    font-size: 12pt;
+}
+
+.font11 {
+    font-size: 11pt;
+}
+
+.font10 {
+    font-size: 10pt;
+}
+
+.wrap-tokenizer {
+    white-space: pre-wrap !important;
+}
+
+iframe {
+    border: 0px;
+}
+
+.wrap-text,
+.wrap-text span {
+    word-wrap: break-word !important;
+    white-space: pre-wrap !important;
+}
+
+.small .sapUiIcon {
+    font-size: 1.5rem !important;
+    height: 1.5rem !important;
+    line-height: 1.5rem !important;
+}
+
+.small .sapMObjLIconDiv {
+    height: 2rem !important;
+}
+
+.small .sapMText {
+    font-size: .8rem !important;
+}
+
+.small.sapMObjLItem {
+    padding: 0 !important;
+}
+
+.small .sapMObjectNumberText {
+    font-size: 1rem !important;
+}
+
+.rounded {
+    border-radius: 20px;
+}
+
+.material.button.rounded {
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    border: 1px solid gray;
+    border-radius: 25px;
+    height: 2.5rem;
+    padding: 0;
+}
+
+.material.button.rounded:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22) !important;
+    border: 1px solid gray;
+    border-radius: 25px;
+    height: 2.5rem;
+    padding: 0;
+}
+
+.material.button.rounded:focus {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22) !important;
+    border: 1px solid gray;
+    border-radius: 25px;
+    height: 2.5rem;
+    padding: 0;
+}
+
+.selected-label {
+    background-color: #fce8e6 !important;
+}
+
+.selected-label .sapMText,
+.selected-label .sapUiIcon {
+    color: #d93025;
+}

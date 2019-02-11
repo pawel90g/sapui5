@@ -1,0 +1,40 @@
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:layout="sap.ui.layout"
+    xmlns:forms="sap.ui.layout.form"
+    xmlns="sap.m">
+
+    <forms:Form width="100%">
+        <forms:layout>
+            <forms:GridLayout/>
+        </forms:layout>
+        <forms:formContainers>
+            <forms:FormContainer id="phoneInfo" title="Skills">
+                <forms:formElements>
+                    <forms:FormElement>
+                        <forms:fields>
+                            <Tokenizer width="100%" editable="false" class="wrap-tokenizer">
+                                <Token text=".NET" />
+                                <Token text="ASP.NET" />
+                                <Token text="ASP.NET MVC" />
+                                <Token text="ASP.NET Web Forms" />
+                                <Token text="ASP.NET Web API" />
+                                <Token text="WPF" />
+                                <Token text="WCF" />
+                                <Token text="Entity Framework" />
+                                <Token text="nHibernate" />
+                                <Token text="SQL Server" />
+                                <Token text="HTML5" />
+                                <Token text="CSS3" />
+                                <Token text="Bootstrap" />
+                                <Token text="JavaScript" />
+                                <Token text="jQuery" />
+                                <Token text="AngularJS" />
+                            </Tokenizer>
+                        </forms:fields>
+                    </forms:FormElement>
+                </forms:formElements>
+            </forms:FormContainer>
+        </forms:formContainers>
+    </forms:Form>
+</mvc:View>

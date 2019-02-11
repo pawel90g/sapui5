@@ -1,0 +1,16 @@
+<core:FragmentDefinition 
+    xmlns:m="sap.m" 
+    xmlns:core="sap.ui.core" 
+    xmlns:layout="sap.ui.layout">
+    <m:Dialog id="shareEventModal" title="{i18n>shareTrip}">
+        <layout:VerticalLayout class="sapUiContentPadding" width="100%">
+            <m:MultiComboBox selectionFinish="onUsersSelectionFinish" items="{users>/}" id="usersSelect">
+                <core:Item key="{users>_id}" text="{users>username}" />
+            </m:MultiComboBox>
+        </layout:VerticalLayout>
+        <m:buttons>
+            <m:Button text="{i18n>share}" press="onShare" />
+            <m:Button text="{i18n>close}" press="onShareClose" />
+        </m:buttons>
+    </m:Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,26 @@
+<mvc:View height="100%" controllerName="sapui5.demo.trippin.controller.Master"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:m="sap.m">
+	<m:Page showHeader="true" enableScrolling="false">
+		<m:headerContent>
+			<m:Button icon="https://cdn.countryflags.com/thumbs/poland/flag-button-square-250.png" press="onPlLangClick"/>
+			<m:Button icon="https://cdn.countryflags.com/thumbs/united-kingdom/flag-button-square-250.png" press="onEnLangClick"/>
+			<m:Button icon="https://cdn.countryflags.com/thumbs/germany/flag-button-square-250.png" press="onDeLangClick"/>
+		</m:headerContent>
+		<m:TileContainer id="tilesContainer">
+			<m:StandardTile press="onPeopleTileClick" icon="sap-icon://customer-briefing" title="{i18n>people}" id="peopleTile"/>
+			<m:StandardTile press="onAirportsTileClick" icon="sap-icon://flight" title="{i18n>airports}" id="airportsTile"/>
+			<m:StandardTile press="onWeatherClick" icon="{weatherTile>/icon}" title="{weatherTile>/title}" infoState="{weatherTile>/infoState}" info="{weatherTile>/info}" numberUnit="{weatherTile>/numberUnit}" number="{weatherTile>/number}" id="weatherTile"/>
+			<m:StandardTile press="onTodosClick" icon="sap-icon://task" title="Todos" id="todosTile"/>
+			<m:StandardTile press="onPostsClick" icon="sap-icon://post" title="Posts" id="postsTile"/>
+			<m:StandardTile press="onAppointmentsClick" icon="sap-icon://appointment" title="{i18n>appointments}" id="appointmentsTile"/>
+			<m:StandardTile press="onPersonalCardClick" icon="sap-icon://business-card" id="cardTile" title="{i18n>businessCard}"/>
+			<m:StandardTile press="onGmailClick" icon="https://upload.wikimedia.org/wikipedia/commons/4/45/New_Logo_Gmail.svg" id="emailTile" title="Gmail"/>
+			<m:StandardTile press="onGoogleCalendarClick" icon="https://upload.wikimedia.org/wikipedia/commons/e/e9/Google_Calendar.png" id="googleCalendarTile" title="Google Calendar"/>
+			<m:StandardTile press="onFacebookClick" icon="https://upload.wikimedia.org/wikipedia/commons/c/cd/Facebook_logo_%28square%29.png" id="facebookTile" title="Facebook"/>
+			<m:StandardTile press="onPeopleTestClick" icon="sap-icon://survey" title="{i18n>tests}" info="{i18n>test}" id="testTile"/>
+			<m:StandardTile press="onSAPUI5Click" icon="sap-icon://sap-ui5" title="SAPUI5" info="{i18n>howTo}" id="sapui5Tile"/>
+		</m:TileContainer>
+	</m:Page>
+	<m:Button id="peopleBtn" />
+</mvc:View>

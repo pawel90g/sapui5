@@ -1,0 +1,65 @@
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:layout="sap.ui.layout"
+    xmlns:forms="sap.ui.layout.form"
+    xmlns="sap.m">
+    <forms:Form width="100%">
+        <forms:layout>
+            <forms:GridLayout/>
+        </forms:layout>
+        <forms:formContainers>
+            <forms:FormContainer id="employment" title="Employment">
+                <forms:formElements>
+                    <forms:FormElement>
+                        <forms:fields>
+                            <layout:HorizontalLayout>
+                                <Image src="https://cdn.bulldogjob.com/system/companies/logos/000/000/338/thumb/FIS-SST_Logo__.jpg" class="sapUiTinyMargin circle" width="80px" />
+                                <layout:VerticalLayout>
+                                    <Text text="Software Developer" class="sapUiTinyMargin bold font12"/>
+                                    <Text text="FIS-SST sp. z o.o." class="sapUiTinyMargin font12"/>
+                                    <Text text="mar 2018 - " class="sapUiTinyMargin italic font10"/>
+                                </layout:VerticalLayout>
+                            </layout:HorizontalLayout>
+                        </forms:fields>
+                    </forms:FormElement>
+                    <forms:FormElement>
+                        <forms:fields>
+                            <layout:HorizontalLayout>
+                                <Image src="https://mhk3gq.dm.files.1drv.com/y4mLlO8-aLWEWhqmUm30_Hz9AKQFYLCnwqVfQUnk_MptmeYdYF4eDYk7XJ2KcS35Hs_BL9DP8huJm34IFvgT1KnIaRauKCQMIbDRqqRb4Xq5VGcxdhi3rFVNivEImeCG47y7W0cNLbW9SKGqYieDvGdUxm5i1K0CnDCWRj2b0gMatUha4ElTQ2E3Q-U0ixOeOHwCyw-Yddz88YfWZ59Pvwj1Q?width=1920&amp;height=1920&amp;cropmode=none" class="sapUiTinyMargin circle" height="80px"/>
+                                <layout:VerticalLayout>
+                                    <Text text="Owner, Software Engineer" class="sapUiTinyMargin bold font12"/>
+                                    <Text text="Margaret - Solutions" class="sapUiTinyMargin font12"/>
+                                    <Text text="aug 2015 - " class="sapUiTinyMargin italic font10"/>
+                                </layout:VerticalLayout>
+                            </layout:HorizontalLayout>
+                        </forms:fields>
+                    </forms:FormElement>
+                    <forms:FormElement>
+                        <forms:fields>
+                            <layout:HorizontalLayout>
+                                <Image src="https://dobryprad.pl/wp-content/uploads/2017/09/Tauron-Polska-Energia-Logo.jpg" class="sapUiTinyMargin circle" height="80px"/>
+                                <layout:VerticalLayout>
+                                    <Text text="Computer programming &amp; applications integration specialist" class="sapUiTinyMargin bold font12"/>
+                                    <Text text="TAURON Obsługa Klienta sp. z o.o." class="sapUiTinyMargin font12"/>
+                                    <Text text="may 2014 - mar 2018" class="sapUiTinyMargin italic font10"/>
+                                </layout:VerticalLayout>
+                            </layout:HorizontalLayout>
+                        </forms:fields>
+                    </forms:FormElement>
+                    <forms:FormElement>
+                        <forms:fields>
+                            <layout:HorizontalLayout>
+                                <Image src="https://cdn.bulldogjob.com/system/companies/logos/000/000/239/thumb/jazzy_regular2-01.jpg" class="sapUiTinyMargin circle" height="80px"/>
+                                <layout:VerticalLayout>
+                                    <Text text="Software Developer" class="sapUiTinyMargin bold font12"/>
+                                    <Text text="Jazzy Innovations" class="sapUiTinyMargin font12"/>
+                                    <Text text="march 2012 - may 2014" class="sapUiTinyMargin italic font10"/>
+                                </layout:VerticalLayout>
+                            </layout:HorizontalLayout>
+                        </forms:fields>
+                    </forms:FormElement>
+                </forms:formElements>
+            </forms:FormContainer>
+        </forms:formContainers>
+    </forms:Form>
+</mvc:View>

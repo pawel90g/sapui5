@@ -1,0 +1,55 @@
+<mvc:View
+    xmlns:m="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:mvc="sap.ui.core.mvc" controllerName="sapui5.demo.trippin.controller.Appointments">
+    <m:Page title="{i18n>appointments}" showNavButton="true" navButtonPress="onNavPress">
+        <m:content>
+            <form:SimpleForm id="registerForm"
+                layout="ResponsiveGridLayout" editable="true" width="100%"
+                emptySpanL="1"
+                emptySpanM="1"
+                columnsL="2"
+                columnsM="1"
+                labelSpanL="4"
+                labelSpanM="4">
+                <form:content>
+                    <core:Title text="{i18n>register}" />
+                    <m:Label text="{i18n>userName}"/>
+                    <m:Input value="{
+                            path: '/UserName',
+                            type: 'sap.ui.model.odata.type.String'
+                        }" />
+                    <m:Label text="{i18n>password}"/>
+                    <m:Input value="{
+                            path: '/Password',
+                            type: 'sap.ui.model.odata.type.String'
+                        }" type="Password" />
+                    <m:Label text="{i18n>confirmPassword}"/>
+                    <m:Input value="{
+                            path: '/ConfirmPassword',
+                            type: 'sap.ui.model.odata.type.String'
+                        }" type="Password" />
+                    <m:Label/>
+                    <m:Button text="{i18n>register}" press="onRegister" icon="sap-icon://visits"/>
+
+
+                    <core:Title text="{i18n>signin}" />
+                    <m:Label text="{i18n>userName}"/>
+                    <m:Input value="{
+                            path: '/UserName',
+                            type: 'sap.ui.model.odata.type.String'
+                        }" />
+                    <m:Label text="{i18n>password}"/>
+                    <m:Input value="{
+                            path: '/Password',
+                            type: 'sap.ui.model.odata.type.String'
+                        }" type="Password" submit="onSignin" />
+                    <m:Label/>
+                    <m:Button text="{i18n>signin}" press="onSignin" icon="sap-icon://key"/>
+                </form:content>
+            </form:SimpleForm>
+        </m:content>
+    </m:Page>
+</mvc:View>

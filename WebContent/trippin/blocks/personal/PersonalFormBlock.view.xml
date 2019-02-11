@@ -1,0 +1,60 @@
+<mvc:View
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:layout="sap.ui.layout"
+	xmlns:forms="sap.ui.layout.form"
+	xmlns="sap.m">
+
+	<forms:Form width="100%">
+		<forms:layout>
+			<forms:GridLayout/>
+		</forms:layout>
+		<forms:formContainers>
+			<forms:FormContainer id="phoneInfo" title="Phone Numbers">
+				<forms:formElements>
+					<forms:FormElement label="Home">
+						<forms:fields>
+							<Text text="+48 731 530 700"/>
+						</forms:fields>
+					</forms:FormElement>
+				</forms:formElements>
+			</forms:FormContainer>
+			<forms:FormContainer id="emailInfo" title="Mailing Address">
+				<forms:formElements>
+					<forms:FormElement label="Work">
+						<forms:fields>
+							<Text text="pgarbacik@fis-sst.pl"/>
+						</forms:fields>
+					</forms:FormElement>
+					<forms:FormElement label="Personal">
+						<forms:fields>
+							<Text text="pawel.garbacik@outlook.com"/>
+						</forms:fields>
+					</forms:FormElement>
+				</forms:formElements>
+			</forms:FormContainer>
+			<forms:FormContainer id="socialInfo" title="Social Accounts">
+				<forms:formElements>
+					<forms:FormElement label="LinkedIn">
+						<forms:fields>
+							<layout:HorizontalLayout>
+								<Image src="https://www.northeastern.edu/careers/wp-content/uploads/2012/10/CBpFkPaz-300x300.png"
+									width="21px" class="sapUiTinyMargin circle"/>
+								<Text text="/paweł-garbacik-3872b6a8" class="sapUiTinyMargin"/>
+							</layout:HorizontalLayout>
+						</forms:fields>
+					</forms:FormElement>
+
+					<forms:FormElement label="Twitter">
+						<forms:fields>
+							<layout:HorizontalLayout>
+								<Image src="http://www.appki.com.pl/wp-content/uploads/2014/07/v65oai7fxn47qv9nectx.png"
+									width="21px" class="sapUiTinyMargin circle"/>
+								<Text text="@pawel90g" class="sapUiTinyMargin"/>
+							</layout:HorizontalLayout>
+						</forms:fields>
+					</forms:FormElement>
+				</forms:formElements>
+			</forms:FormContainer>
+		</forms:formContainers>
+	</forms:Form>
+</mvc:View>

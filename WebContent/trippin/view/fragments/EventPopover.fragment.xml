@@ -1,0 +1,16 @@
+<core:FragmentDefinition 
+    xmlns:m="sap.m" 
+    xmlns:layout="sap.ui.layout" 
+    xmlns:core="sap.ui.core">
+    <m:Popover title="{title}" class="sapUiContentPadding" placement="Bottom">
+        <m:footer>
+            <m:Toolbar>
+                <m:ToolbarSpacer/>
+                <m:Button id="edit" text="{i18n>edit}" press="onEventEdit" />
+                <m:Button id="share" text="{i18n>share}" press="onEventShare" />
+                <m:Button id="delete" text="{i18n>delete}" press="onEventDelete" />
+                <m:Button id="close" text="{i18n>close}" press="onPopoverClose" />
+            </m:Toolbar>
+        </m:footer>
+    </m:Popover>
+</core:FragmentDefinition>

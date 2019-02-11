@@ -1,0 +1,80 @@
+<mvc:View 
+    xmlns:m="sap.m" 
+    xmlns:layout="sap.ui.layout" 
+    xmlns:unified="sap.ui.unified" 
+    xmlns:mvc="sap.ui.core.mvc" controllerName="sapui5.demo.trippin.controller.Trip">
+    <m:Page title="{i18n>trip}" showNavButton="true" navButtonPress="onNavPress">
+        <m:content>
+            <m:OverflowToolbar class="sapUiResponsiveMargin">
+                <m:Text text="{/Name}" />
+                <m:Button icon="sap-icon://user-edit" press="onTripEdit" type="Transparent"/>
+                <m:ToolbarSpacer/>
+                <m:Button icon="sap-icon://share-2" text="{i18n>shareTrip}" press="onShareTrip" id="shareTripBtn"/>
+            </m:OverflowToolbar>
+            <layout:HorizontalLayout class="sapUiResponsiveMargin">
+                <m:ObjectHeader>
+                    <m:attributes>
+                        <m:ObjectAttribute text="{i18n>name}: {/Name}"/>
+                        <m:ObjectAttribute text="{i18n>budget}: {/Budget}" />
+                        <m:ObjectAttribute text="{i18n>description}: {/Description}" />
+                        <m:ObjectAttribute text="{i18n>tags}: {/Tags}" />
+                    </m:attributes>
+                </m:ObjectHeader>
+                <m:PlanningCalendar
+                    id="tripCalendar"
+                    width="50%"
+                    startDate="{/StartDate}"
+                    rows="{/Rows}"
+                    appointmentsVisualization="Filled"
+                    showEmptyIntervalHeaders="false"
+                    showWeekNumbers="false"
+                    viewKey="Day"
+                    showRowHeaders="false">
+                    <m:rows>
+                        <m:PlanningCalendarRow
+                            appointments="{
+                                path: 'appointments',
+                                templateShareable: 'false'
+                            }">
+                            <m:appointments>
+                                <unified:CalendarAppointment 
+                                    startDate="{start}"
+                                    endDate="{end}"
+                                    tentative="false"
+                                    type="Type06"
+                                    title="{title}" >
+                                </unified:CalendarAppointment>
+                            </m:appointments>
+                        </m:PlanningCalendarRow>
+                    </m:rows>
+                </m:PlanningCalendar>
+            </layout:HorizontalLayout>
+            <m:Table id="involvedTable" items="{involvedPeople>/value}" class="sapUiResponsiveMargin">
+                <m:columns>
+                    <m:Column>
+                        <m:Text text="{i18n>firstName} {i18n>lastName}" />
+                    </m:Column>
+                    <m:Column minScreenWidth="Desktop" demandPopin="false">
+                        <m:Text text="{i18n>gender}" />
+                    </m:Column>
+                    <m:Column minScreenWidth="Desktop" demandPopin="false">
+                        <m:Text text="{i18n>age}" />
+                    </m:Column>
+                    <m:Column>
+                        <m:Text text="{i18n>emails}" />
+                    </m:Column>
+                </m:columns>
+                <m:items>
+                    <m:ColumnListItem type="Navigation">
+                        <m:cells>
+                            <m:ObjectIdentifier title="{involvedPeople>FirstName} {involvedPeople>LastName}" text="{involvedPeople>UserName}"/>
+                            <m:Text text="{involvedPeople>Gender}" />
+                            <m:ObjectNumber number="{involvedPeople>Age}"/>
+                            <m:Text text="{involvedPeople>Emails}" />
+                        </m:cells>
+                    </m:ColumnListItem>
+                </m:items>
+            </m:Table>
+        </m:content>
+    </m:Page>
+</mvc:View>

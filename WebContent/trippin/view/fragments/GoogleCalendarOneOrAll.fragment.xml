@@ -1,0 +1,19 @@
+<core:FragmentDefinition
+    xmlns:m="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout">
+    <m:Dialog id="gcalendarOneOrAll">
+        <layout:VerticalLayout class="sapUiContentPadding" width="100%">
+            <m:RadioButtonGroup columns="1">
+                <m:buttons>
+                    <m:RadioButton id="rbOne" text="{i18n>oneEvent}"/>
+                    <m:RadioButton id="rbAll" text="{i18n>allEvents}"/>
+                </m:buttons>
+            </m:RadioButtonGroup>
+        </layout:VerticalLayout>
+        <m:buttons>
+            <m:Button text="OK" press="onOneOrAllOk" />
+            <m:Button text="{i18n>cancel}" press="onOneOrAllCancel" />
+        </m:buttons>
+    </m:Dialog>
+</core:FragmentDefinition>

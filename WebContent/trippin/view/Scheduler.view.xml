@@ -1,0 +1,35 @@
+<mvc:View 
+    xmlns:m="sap.m" 
+    xmlns:layout="sap.ui.layout" 
+    xmlns:unified="sap.ui.unified" 
+    xmlns:mvc="sap.ui.core.mvc" controllerName="sapui5.demo.trippin.controller.Scheduler">
+    <m:Page title="Scheduler" showNavButton="true" navButtonPress="onNavPress">
+        <m:content>
+            <m:PlanningCalendar id="tripCalendar" width="100%" rows="{/}" appointmentsVisualization="Filled" showEmptyIntervalHeaders="false" showWeekNumbers="true" viewKey="Hour" showRowHeaders="true" appointmentSelect="handleAppointmentSelect" intervalSelect="handleAppointmentAddWithContext">
+                <m:rows>
+                    <m:PlanningCalendarRow icon="sap-icon://person-placeholder" title="{username}" appointments="{
+                                path: 'appointments',
+                                templateShareable: 'false'
+                            }">
+                        <m:appointments>
+                            <unified:CalendarAppointment startDate="{start}" endDate="{end}" tentative="false" type="Type06" title="{title}" text="{info}"></unified:CalendarAppointment>
+                        </m:appointments>
+                    </m:PlanningCalendarRow>
+                </m:rows>
+            </m:PlanningCalendar>
+
+            <m:PlanningCalendar id="sharedCalendar" width="100%" rows="{shared>/}" appointmentsVisualization="Filled" showEmptyIntervalHeaders="false" showWeekNumbers="true" viewKey="Hour" showRowHeaders="true">
+                <m:rows>
+                    <m:PlanningCalendarRow icon="sap-icon://person-placeholder" title="{shared>owner/username}" appointments="{
+                                path: 'shared>appointments',
+                                templateShareable: 'false'
+                            }">
+                        <m:appointments>
+                            <unified:CalendarAppointment startDate="{shared>start}" endDate="{shared>end}" tentative="false" type="Type06" title="{shared>title}" text="{shared>info}"></unified:CalendarAppointment>
+                        </m:appointments>
+                    </m:PlanningCalendarRow>
+                </m:rows>
+            </m:PlanningCalendar>
+        </m:content>
+    </m:Page>
+</mvc:View>

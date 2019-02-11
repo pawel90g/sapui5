@@ -1,0 +1,28 @@
+<mvc:View 
+    xmlns:m="sap.m"
+    xmlns:layout="sap.ui.layout" 
+    xmlns:mvc="sap.ui.core.mvc" 
+    controllerName="sapui5.demo.trippin.controller.Posts">
+    <m:Page title="{i18n>posts}" showNavButton="true" navButtonPress="onNavPress">
+        <m:content>
+            <m:List items="{/}">
+                <m:CustomListItem templateShareable="true">
+                    <m:VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom">
+                        <m:HBox>
+                            <m:Image src="https://image.flaticon.com/icons/svg/3/3729.svg" width="70px"/>
+                            <m:VBox>
+                                <m:Label text="{user/name}" textAlign="Left" design="Bold"/>
+                                <m:Label text="{user/username}" textAlign="Left" design="Bold"/>
+                            </m:VBox>
+                            <m:Label text="{title}" textAlign="Right" textDirection="LTR"/>
+                        </m:HBox>
+                        <m:Label text="{body}" textAlign="Left" wrapping="true"/>
+                    </m:VBox>
+                    <m:List items="{path: 'comments', templateShareable: 'true'}">
+                        <m:FeedListItem sender="{email}" icon="sap-icon://person-placeholder" iconDensityAware="false" text="{body}" />
+                     </m:List>
+                </m:CustomListItem>
+            </m:List>
+        </m:content>
+    </m:Page>
+</mvc:View>

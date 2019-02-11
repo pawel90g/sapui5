@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="UTF-8">
+    <meta name="theme-color" content="#009de2">
+    <link rel="icon" sizes="256x256" href="favicon.ico">
+    <title>TripPin</title>
+    <script id="sap-ui-bootstrap" src="https://sapui5.hana.ondemand.com/1.54.5/resources/sap-ui-core.js" data-sap-ui-libs="sap.m" data-sap-ui-theme="sap_bluecrystal"
+        data-sap-ui-compatVersion="edge" data-sap-ui-preload="async" data-sap-ui-xx-bindingSyntax="complex" data-sap-ui-resourceroots='{"sapui5.demo.trippin": "./trippin/"}'>
+        </script>
+    <script>
+        sap.ui.getCore().attachInit(function () {
+            sap.ui.require([
+                "sap/m/Shell",
+                "sap/ui/core/ComponentContainer",
+                "sapui5/demo/trippin/Component"
+            ], function (Shell, ComponentContainer, Component) {
+                new Shell({
+                    app: new ComponentContainer({
+                        height: "100%",
+                        component: new Component({
+                            id: "mvcAppComponent"
+                        })
+                    }),
+                    appWidthLimited: false
+                }).placeAt("content");
+            });
+        });
+    </script>
+    <script defer>
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                Notification.requestPermission((permission) => {
+                    if (permission === "granted") {
+                        let worker = new Worker("trippin/workers/notificationWorker.js");
+                        let coords = { latitude: position.coords.latitude, longitude: position.coords.longitude };
+                        worker.postMessage(coords);
+                    }
+                });
+            });
+        }
+
+    </script>
+</head>
+
+<body class="sapUiBody" role="application">
+    <div id="content"></div>
+</body>
+
+</html>

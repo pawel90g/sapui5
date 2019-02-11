@@ -1,0 +1,25 @@
+<core:FragmentDefinition
+    xmlns:m="sap.m"
+    xmlns:layout="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc">
+    <m:Dialog id="htmlViewerDialog" title="{html>/title}">
+        <m:subHeader>
+            <m:Bar>
+                <m:contentLeft>
+                    <m:Button id="iframeBack" press="onIframeBack" icon="sap-icon://nav-back"/>
+                </m:contentLeft>
+            </m:Bar>
+        </m:subHeader>
+        <layout:VerticalLayout
+            class="sapUiContentPadding"
+            width="100%">
+            <layout:content>
+                <core:HTML content="&lt;iframe src='{html>/url}' height='800px' width='1000px' &gt;&lt;/iframe&gt;"/>
+            </layout:content>
+        </layout:VerticalLayout>
+        <m:buttons>
+            <m:Button id="close" text="{i18n>close}" press="onWikiClose" />
+        </m:buttons>
+    </m:Dialog>
+</core:FragmentDefinition>

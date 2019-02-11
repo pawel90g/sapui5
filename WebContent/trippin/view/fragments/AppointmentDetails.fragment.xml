@@ -1,0 +1,23 @@
+<core:FragmentDefinition 
+    xmlns:m="sap.m" 
+    xmlns:core="sap.ui.core" 
+    xmlns:form="sap.ui.layout.form">
+    <m:Dialog id="appointmentDetails" title="{i18n>shareTrip}">
+        <form:SimpleForm id="registerForm" layout="ResponsiveGridLayout" editable="true" width="100%" emptySpanL="1" emptySpanM="1" columnsL="2" columnsM="1" labelSpanL="4" labelSpanM="4">
+            <form:content>
+                <m:Label text="{i18n>title}"/>
+                <m:Input value="{title}" id="detailTitleInput"/>
+                <m:Label text="{i18n>description}"/>
+                <m:Input value="{info}" id="detailInfoInput"/>
+                <m:Label text="{i18n>startsAt}"/>
+                <m:DateTimePicker id="startsAtDatePicker" placeholder="{i18n>startsAt}" change="handleChange" class="sapUiSmallMarginBottom" value="{path:'start', type:'sap.ui.model.type.DateTime', formatOptions: { style: 'medium', strictParsing: true}}" />
+                <m:Label text="{i18n>endsAt}"/>
+                <m:DateTimePicker id="endsAtDatePicker" placeholder="{i18n>endsAt}" change="handleChange" class="sapUiSmallMarginBottom" value="{path:'end', type:'sap.ui.model.type.DateTime', formatOptions: { style: 'medium', strictParsing: true}}"/>
+            </form:content>
+        </form:SimpleForm>
+        <m:buttons>
+            <m:Button text="{i18n>save}" press="onDetailSave" />
+            <m:Button text="{i18n>close}" press="onDetailClose" />
+        </m:buttons>
+    </m:Dialog>
+</core:FragmentDefinition>

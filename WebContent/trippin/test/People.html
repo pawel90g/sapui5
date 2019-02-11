@@ -1,0 +1,136 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Opa People Tests</title>
+
+    <script id="sap-ui-bootstrap" src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"></script>
+
+    <script>
+        jQuery.sap.require("sap.ui.qunit.qunit-css");
+        jQuery.sap.require("sap.ui.thirdparty.qunit");
+        jQuery.sap.require("sap.ui.qunit.qunit-junit");
+        jQuery.sap.require("sap.ui.qunit.qunit-coverage");
+        QUnit.config.autostart = false;
+
+        sap.ui.require([
+            "sap/ui/test/Opa5",
+            "sap/ui/test/opaQunit",
+            "sap/ui/test/actions/Press",
+            "sap/ui/test/actions/EnterText",
+            "sap/ui/test/matchers/PropertyStrictEquals",
+            "sap/ui/test/matchers/Properties",
+            "sap/ui/test/matchers/Ancestor",
+            "sap/ui/test/matchers/AggregationFilled"
+        ], function (Opa5, opaTest, Press, EnterText, PropertyStrictEquals, Properties, Ancestor, AggregationFilled) {
+            QUnit.module("People");
+
+            Opa5.extendConfig({
+                viewNamespace: "sapui5.demo.trippin.view.",
+                autoWait: true
+            });
+
+            opaTest("Should load people to table", function (Given, When, Then) {
+
+                Given.iStartMyAppInAFrame("../../index.html");
+
+                When.waitFor({
+                    viewName: "Master",
+                    id: new RegExp("peopleTile"),
+                    actions: new Press(),
+                    errorMessage: "Did not find the button"
+                });
+
+                Then.waitFor({
+                    viewName: "People",
+                    id: new RegExp("peopleTable"),
+                    matchers: new AggregationFilled({ name: "items" }),
+                    success: function (aButtons) {
+                        Opa5.assert.ok(true, "People list loaded");
+                    }
+                });
+
+                Then.waitFor({
+                    id: new RegExp("peopleSearchField"),
+                    actions: new EnterText({ text: "Whyte" }),
+                    errorMessage: "No person with given name"
+                });
+
+                Then.waitFor({
+                    id: new RegExp("peopleTable"),
+                    matchers: new AggregationFilled({ name: "items" }),
+                    success: function (aButtons) {
+                        Opa5.assert.ok(true, "Found person");
+                    }
+                });
+
+                Then.waitFor({
+                    id: new RegExp("peopleTable"),
+                    actions: function (oTable) {
+                        oTable.getItems()[0].firePress();
+                    }
+                });
+
+                Then.waitFor({
+                    viewName: "Person",
+                    id: new RegExp("tripsListBtn"),
+                    actions: new Press(),
+                    errorMessage: "Did not find the button"
+                });
+
+                Then.waitFor({
+                    viewName: "PersonTrips",
+                    id: new RegExp("tripsTable"),
+                    matchers: new AggregationFilled({ name: "items" }),
+                    success: function () {
+                        Opa5.assert.ok(true, "Trips list loaded");
+                    }
+                });
+
+                Then.waitFor({
+                    viewName: "PersonTrips",
+                    id: new RegExp("tripsTable"),
+                    actions: function(oTable) {
+                        oTable.getItems()[0].firePress();
+                    }
+                });
+
+                Then.waitFor({
+                    viewName: "Trip",
+                    id: "involvedTable",
+                    matchers: new AggregationFilled({ name: "items" }),
+                    success: function () {
+                        Opa5.assert.ok(true, "Involved people list loaded");
+                    }
+                });
+
+                Then.waitFor({
+                    viewName: "Trip",
+                    id: new RegExp("shareTripBtn"),
+                    actions: new Press()
+                });
+
+                Then.waitFor({
+                    id: new RegExp("addPeopleSelect"),
+                    matchers: new AggregationFilled({ name: "items" }),
+                    success: function () {
+                        Opa5.assert.ok(true, "People list loaded");
+                    }
+                });
+
+                Then.iTeardownMyAppFrame();
+            });
+
+            QUnit.start();
+        });
+    </script>
+
+</head>
+
+<body>
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+</body>
+
+</html>

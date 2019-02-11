@@ -1,0 +1,42 @@
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:layout="sap.ui.layout"
+    xmlns:forms="sap.ui.layout.form"
+    xmlns="sap.m">
+
+    <forms:Form width="100%">
+        <forms:layout>
+            <forms:GridLayout/>
+        </forms:layout>
+        <forms:formContainers>
+            <forms:FormContainer id="education" title="Education">
+                <forms:formElements>
+                    <forms:FormElement>
+                        <forms:fields>
+                            <layout:HorizontalLayout>
+                                <Image src="https://media.licdn.com/dms/image/C4E0BAQHO9IXuIpfxXA/company-logo_200_200/0?e=2125267200&amp;v=beta&amp;t=WI2eHN8Gahyg8aKJ3ovsZNt4EZ4cbbZjiGVYukAfiXI" class="sapUiTinyMargin circle" height="80px"/>
+                                <layout:VerticalLayout>
+                                    <Text text="Silesian University of Technology" class="sapUiTinyMargin bold font12"/>
+                                    <Text text="Master of Engineering (M.Eng.), Computer Science" class="sapUiTinyMargin font12"/>
+                                    <Text text="2013 - 2014" class="sapUiTinyMargin italic font10"/>
+                                </layout:VerticalLayout>
+                            </layout:HorizontalLayout>
+                        </forms:fields>
+                    </forms:FormElement>
+                    <forms:FormElement>
+                        <forms:fields>
+                            <layout:HorizontalLayout>
+                                <Image src="https://media.licdn.com/dms/image/C4E0BAQHO9IXuIpfxXA/company-logo_200_200/0?e=2125267200&amp;v=beta&amp;t=WI2eHN8Gahyg8aKJ3ovsZNt4EZ4cbbZjiGVYukAfiXI" class="sapUiTinyMargin circle" height="80px"/>
+                                <layout:VerticalLayout>
+                                    <Text text="Silesian University of Technology" class="sapUiTinyMargin bold font12"/>
+                                    <Text text="Bachelor of Engineering (B.E.), Computer Science" class="sapUiTinyMargin font12"/>
+                                    <Text text="2009 - 2013" class="sapUiTinyMargin italic font10"/>
+                                </layout:VerticalLayout>
+                            </layout:HorizontalLayout>
+                        </forms:fields>
+                    </forms:FormElement>
+                </forms:formElements>
+            </forms:FormContainer>
+        </forms:formContainers>
+    </forms:Form>
+</mvc:View>

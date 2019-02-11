@@ -1,0 +1,96 @@
+<mvc:View
+    xmlns:m="sap.m"
+    xmlns="sap.suite.ui.commons"
+    xmlns:layout="sap.ui.layout"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:viz="sap.viz.ui5.controls"
+    xmlns:uxap="sap.uxap"
+    xmlns:vk="sap.ui.vk"
+    xmlns:vbm="sap.ui.vbm" controllerName="sapui5.demo.trippin.controller.Weather">
+    <m:Page title="{i18n>weather}" showNavButton="true" navButtonPress="onNavPress">
+        <m:subHeader>
+            <m:Toolbar>
+                <m:SearchField width="100%" search="onLocationSearch" id="locationSearchInput"/>
+            </m:Toolbar>
+        </m:subHeader>
+        <m:content>
+            <uxap:ObjectPageLayout id="ObjectPageLayout" enableLazyLoading="false" showTitleInHeaderContent="true" showEditHeaderButton="false" height="auto">
+                <uxap:headerTitle>
+                    <uxap:ObjectPageHeader objectImageURI="{/weather/0/iconUrl}" objectTitle="{/name}" objectImageShape="Circle" objectImageAlt="{/icon}" objectSubtitle="{/name}" isObjectIconAlwaysVisible="false" isObjectTitleAlwaysVisible="false" isObjectSubtitleAlwaysVisible="false">
+                    </uxap:ObjectPageHeader>
+                </uxap:headerTitle>
+                <uxap:headerContent>
+                    <layout:VerticalLayout>
+                        <m:Label text="{i18n>windSpeed}: {/wind/speed}"/>
+                        <m:Label text="{i18n>windDirection}: {/wind/direction} ({/wind/deg}*)"/>
+                    </layout:VerticalLayout>
+                    <layout:VerticalLayout>
+                        <m:Label text="{i18n>temperature}: {/main/tempC} *C"/>
+                        <m:Label text="{i18n>min} {i18n>temperature}: {/main/tempC_min} *C"/>
+                        <m:Label text="{i18n>max} {i18n>temperature}: {/main/tempC_max} *C"/>
+                    </layout:VerticalLayout>
+                    <layout:VerticalLayout>
+                        <m:Label text="{i18n>pressure} {/main/pressure} hPa"/>
+                        <m:Label text="{i18n>humidity} {/main/humidity} %"/>
+                    </layout:VerticalLayout>
+                    <layout:VerticalLayout>
+                        <m:Button text="Wiki" press="onWikiClick"/>
+                    </layout:VerticalLayout>
+                </uxap:headerContent>
+            </uxap:ObjectPageLayout>
+            <vbm:GeoMap id="map" height="300px" width="100%" initialPosition="{currentLocation>/longitude};{currentLocation>/latitude};0" initialZoom="14" disablePan="true" disableZoom="true">
+                <vbm:vos>
+                    <vbm:Spots>
+                        <vbm:Spot position="{currentLocation>/longitude};{currentLocation>/latitude};0" type="Default" contentOffset="0;-5" scale="1;1;1"/>
+                    </vbm:Spots>
+                </vbm:vos>
+            </vbm:GeoMap>
+            <layout:Splitter width="100%" height="70%" orientation="Vertical">
+                <layout:Splitter>
+                    <layout:contentAreas>
+                        <ChartContainer id="temperatureChartContainer" showPersonalization="false" autoAdjustHeight="true" title="{i18n>temperature}">
+                            <content>
+                                <ChartContainerContent icon="sap-icon://line-chart" title="Line Chart">
+                                    <content>
+                                        <viz:Popover id="descriptionPopOver"/>
+                                        <viz:VizFrame id="temperatureChartVizFrame" height="400px" width="100%" title="{i18n>temperature}" uiConfig="{applicationSet:'fiori'}" vizProperties="{ title: { visible : false }, valueAxis: { title: { visible: false } }, categoryAxis: { title: { visible: false } } }" legendVisible="false"/>
+                                    </content>
+                                </ChartContainerContent>
+                            </content>
+                        </ChartContainer>
+                    </layout:contentAreas>
+                </layout:Splitter>
+                <layout:Splitter orientation="Horizontal">
+                    <layout:contentAreas>
+                        <layout:Splitter>
+                            <layout:contentAreas>
+                                <ChartContainer id="humidityChartContainer" showPersonalization="false" autoAdjustHeight="true" title="{i18n>humidity}">
+                                    <content>
+                                        <ChartContainerContent icon="sap-icon://line-chart" title="Line Chart">
+                                            <content>
+                                                <viz:VizFrame id="humidityChartVizFrame" height="400px" width="100%" title="{i18n>humidity}" uiConfig="{applicationSet:'fiori'}" vizProperties="{ title: { visible : false }, valueAxis: { title: { visible: false } }, categoryAxis: { title: { visible: false } } }" legendVisible="false"/>
+                                            </content>
+                                        </ChartContainerContent>
+                                    </content>
+                                </ChartContainer>
+                            </layout:contentAreas>
+                        </layout:Splitter>
+                        <layout:Splitter>
+                            <layout:contentAreas>
+                                <ChartContainer id="pressureChartContainer" showPersonalization="false" autoAdjustHeight="true" title="{i18n>pressure}">
+                                    <content>
+                                        <ChartContainerContent icon="sap-icon://line-chart" title="Line Chart">
+                                            <content>
+                                                <viz:VizFrame id="pressureChartVizFrame" height="400px" width="100%" title="{i18n>pressure}" uiConfig="{applicationSet:'fiori'}" vizProperties="{ title: { visible : false }, valueAxis: { title: { visible: false } }, categoryAxis: { title: { visible: false } } }" legendVisible="false"/>
+                                            </content>
+                                        </ChartContainerContent>
+                                    </content>
+                                </ChartContainer>
+                            </layout:contentAreas>
+                        </layout:Splitter>
+                    </layout:contentAreas>
+                </layout:Splitter>
+            </layout:Splitter>
+        </m:content>
+    </m:Page>
+</mvc:View>

@@ -1,0 +1,55 @@
+<mvc:View 
+    xmlns="sap.m" 
+    xmlns:layout="sap.ui.layout" 
+    xmlns:mvc="sap.ui.core.mvc" controllerName="sapui5.demo.trippin.controller.Person">
+    <Page title="{i18n>personData}" showNavButton="true" navButtonPress="onNavPress">
+        <subHeader>
+            <Toolbar>
+                <ToolbarSpacer/>
+                <Button icon="sap-icon://activity-items" text="{i18n>tripsList}" press="onFlightsList" id="tripsListBtn"></Button>
+                <Button icon="sap-icon://collaborate" text="{i18n>friendsList}" press="onFriendsList" id="friendsListBtn"></Button>
+            </Toolbar>
+        </subHeader>
+        <content>
+            <OverflowToolbar>
+                <Text text="{/FirstName} {/LastName}" />
+                <Button icon="sap-icon://user-edit" press="onPersonEdit" type="Transparent"></Button>
+            </OverflowToolbar>
+            <ObjectHeader>
+                <attributes>
+                    <ObjectAttribute text="{i18n>userName}: {/UserName}" />
+                    <ObjectAttribute text="{i18n>gender}: {/Gender}" visible="{= ${/Gender} !== null}" />
+                    <ObjectAttribute text="{i18n>age}: {/Age}" visible="{= ${/Age} !== null}" />
+                    <ObjectAttribute text="{i18n>emails}: {/Emails}" visible="{= ${/Emails} !== null}" />
+                </attributes>
+            </ObjectHeader>
+            <Table id="addressesTable" items="{/AddressInfo}" width="auto" class="sapUiResponsiveMargin" noDataText="{i18n>noAddresses}" growing="true" growingScrollToLoad="true">
+                <headerToolbar>
+                    <Toolbar>
+                        <Title id="tableHeader" text="{/AddressInfo.length}"/>
+                    </Toolbar>
+                </headerToolbar>
+                <columns>
+                    <Column id="addressColumn">
+                        <header>
+                            <Text text="{i18n>address}" />
+                        </header>
+                    </Column>
+                    <Column id="cityColumn">
+                        <header>
+                            <Text text="{i18n>city}"/>
+                        </header>
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <ObjectIdentifier text="{Address}"/>
+                            <ObjectIdentifier text="{City/Name}, {City/CountryRegion}"/>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+    </Page>
+</mvc:View>

@@ -1,0 +1,56 @@
+<mvc:View 
+    xmlns:m="sap.m" 
+    xmlns:layout="sap.ui.layout" 
+    xmlns:form="sap.ui.layout.form" 
+    xmlns:mvc="sap.ui.core.mvc" controllerName="sapui5.demo.trippin.controller.EditPerson">
+    <m:Page title="{i18n>editPerson}" showNavButton="true" navButtonPress="onNavPress">
+        <m:content>
+            <form:SimpleForm id="personEditForm" layout="ResponsiveGridLayout" editable="true" class="sapUiResponsiveMargin" width="auto" labelSpanL="3" labelSpanM="4" emptySpanL="4" emptySpanM="4" columnsL="1" columnsM="1">
+                <form:content>
+                    <m:Label text="{i18n>userName}"/>
+                    <m:Input id="userNameInput" value="{
+                        path: '/UserName',
+                        type: 'sap.ui.model.odata.type.String'
+                    }" enabled="false"/>
+                    <m:Label text="{i18n>firstName}"/>
+                    <m:Input id="firstNameInput" value="{
+                        path: '/FirstName',
+                        type: 'sap.ui.model.odata.type.String'
+                    }" />
+                    <m:Label text="{i18n>lastName}"/>
+                    <m:Input id="lastNameInput" value="{
+                        path: '/LastName',
+                        type: 'sap.ui.model.odata.type.String'
+                    }" />
+                    <m:Label text="{i18n>gender}"/>
+                    <m:Input id="genderInput" value="{
+                        path: '/Gender',
+                        type: 'sap.ui.model.odata.type.String'
+                    }" enabled="false"/>
+                    <m:Label text="{i18n>age}"/>
+                    <m:Input id="ageInput" value="{
+                        path: '/Age',
+                        type: 'sap.ui.model.odata.type.Int32'
+                    }" />
+                </form:content>
+            </form:SimpleForm>
+            <m:List id="emailsList" mode="Delete" delete="onEmailDelete" enableBusyIndicator="true" headerText="{i18n>emails}" growing="true" items="{
+                    path: '/Emails'
+                }">
+                <m:StandardListItem title="{}" description="{}" icon="sap-icon://email" />
+            </m:List>
+            <form:SimpleForm id="addEmailForm" layout="ResponsiveGridLayout" editable="true" class="sapUiResponsiveMargin" width="auto" labelSpanL="3" labelSpanM="3" emptySpanL="2" emptySpanM="2" columnsL="1" columnsM="1">
+                <m:Label text="{i18n>email}"/>
+                <m:Input id="newEmailInput"/>
+                <m:Button text="{i18n>add}" icon="sap-icon://add" press="onAddEmail"/>
+            </form:SimpleForm>
+        </m:content>
+        <m:footer>
+            <m:Toolbar>
+                <m:ToolbarSpacer/>
+                <m:Button text="{i18n>save}" press="onSave" icon="sap-icon://sys-enter"/>
+                <m:Button text="{i18n>discard}" press="onDiscard" icon="sap-icon://sys-cancel"/>
+            </m:Toolbar>
+        </m:footer>
+    </m:Page>
+</mvc:View>

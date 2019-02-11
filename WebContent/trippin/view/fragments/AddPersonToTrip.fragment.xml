@@ -1,0 +1,16 @@
+<core:FragmentDefinition 
+    xmlns:m="sap.m" 
+    xmlns:core="sap.ui.core" 
+    xmlns:layout="sap.ui.layout">
+    <m:Dialog id="shareTripDialog" title="{i18n>shareTrip}">
+        <layout:VerticalLayout class="sapUiContentPadding" width="100%">
+            <m:MultiComboBox selectionFinish="onSelectionFinish" items="{availablePeople>/value}" id="addPeopleSelect">
+                <core:Item key="{availablePeople>UserName}" text="{availablePeople>FirstName} {availablePeople>LastName} {availablePeople>AlreadyAdded}" visible="{= ${availablePeople>AlreadyAdded} === true}"/>
+            </m:MultiComboBox>
+        </layout:VerticalLayout>
+        <m:buttons>
+            <m:Button text="{i18n>add}" press="onInvolvePeople" />
+            <m:Button text="{i18n>close}" press="onShareTripDialogClose" />
+        </m:buttons>
+    </m:Dialog>
+</core:FragmentDefinition>
